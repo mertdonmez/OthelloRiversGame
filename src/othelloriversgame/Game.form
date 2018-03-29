@@ -26,25 +26,30 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buton1" pref="81" max="32767" attributes="0"/>
-                  <Component id="buton57" max="32767" attributes="0"/>
-                  <Component id="buton49" max="32767" attributes="0"/>
-                  <Component id="buton41" max="32767" attributes="0"/>
-                  <Component id="buton9" max="32767" attributes="0"/>
-                  <Component id="buton17" alignment="0" max="32767" attributes="0"/>
-                  <Component id="buton25" alignment="0" max="32767" attributes="0"/>
-                  <Component id="buton33" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buton26" pref="81" max="32767" attributes="0"/>
-                  <Component id="buton18" max="32767" attributes="0"/>
-                  <Component id="buton10" max="32767" attributes="0"/>
-                  <Component id="buton34" max="32767" attributes="0"/>
-                  <Component id="buton42" max="32767" attributes="0"/>
-                  <Component id="buton50" max="32767" attributes="0"/>
-                  <Component id="buton58" max="32767" attributes="0"/>
-                  <Component id="buton2" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buton1" pref="81" max="32767" attributes="0"/>
+                          <Component id="buton57" max="32767" attributes="0"/>
+                          <Component id="buton49" max="32767" attributes="0"/>
+                          <Component id="buton41" max="32767" attributes="0"/>
+                          <Component id="buton9" max="32767" attributes="0"/>
+                          <Component id="buton17" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buton25" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buton33" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buton26" pref="81" max="32767" attributes="0"/>
+                          <Component id="buton18" max="32767" attributes="0"/>
+                          <Component id="buton10" max="32767" attributes="0"/>
+                          <Component id="buton34" max="32767" attributes="0"/>
+                          <Component id="buton42" max="32767" attributes="0"/>
+                          <Component id="buton50" max="32767" attributes="0"/>
+                          <Component id="buton58" max="32767" attributes="0"/>
+                          <Component id="buton2" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="label1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -65,7 +70,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="buton35" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buton37" max="32767" attributes="0"/>
+                              <Component id="buton36" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="buton43" min="-2" pref="81" max="-2" attributes="0"/>
@@ -86,7 +91,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="buton29" max="32767" attributes="0"/>
-                          <Component id="buton36" max="32767" attributes="0"/>
+                          <Component id="buton37" max="32767" attributes="0"/>
                           <Component id="buton44" alignment="0" max="32767" attributes="0"/>
                           <Component id="buton52" alignment="0" max="32767" attributes="0"/>
                           <Component id="buton60" alignment="0" max="32767" attributes="0"/>
@@ -207,8 +212,8 @@
                   <Component id="buton33" pref="58" max="32767" attributes="0"/>
                   <Component id="buton34" max="32767" attributes="0"/>
                   <Component id="buton35" alignment="1" max="32767" attributes="0"/>
-                  <Component id="buton36" alignment="1" max="32767" attributes="0"/>
                   <Component id="buton37" alignment="1" max="32767" attributes="0"/>
+                  <Component id="buton36" alignment="1" max="32767" attributes="0"/>
                   <Component id="buton38" alignment="1" max="32767" attributes="0"/>
                   <Component id="buton39" max="32767" attributes="0"/>
                   <Component id="buton40" max="32767" attributes="0"/>
@@ -246,7 +251,9 @@
                   <Component id="buton63" max="32767" attributes="0"/>
                   <Component id="buton64" pref="58" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="label1" min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -255,33 +262,24 @@
     <Component class="javax.swing.JButton" name="buton9">
     </Component>
     <Component class="javax.swing.JButton" name="buton10">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buton10MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton11">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buton10MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton12">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton12ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton13">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton13ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton14">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton14ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton15">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton15ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton16">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton16ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton17">
     </Component>
@@ -294,9 +292,6 @@
     <Component class="javax.swing.JButton" name="buton21">
     </Component>
     <Component class="javax.swing.JButton" name="buton22">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton22ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton23">
     </Component>
@@ -321,15 +316,12 @@
     <Component class="javax.swing.JButton" name="buton33">
     </Component>
     <Component class="javax.swing.JButton" name="buton34">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buton34ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buton35">
     </Component>
-    <Component class="javax.swing.JButton" name="buton36">
-    </Component>
     <Component class="javax.swing.JButton" name="buton37">
+    </Component>
+    <Component class="javax.swing.JButton" name="buton36">
     </Component>
     <Component class="javax.swing.JButton" name="buton38">
     </Component>
@@ -400,6 +392,8 @@
     <Component class="javax.swing.JButton" name="buton7">
     </Component>
     <Component class="javax.swing.JButton" name="buton8">
+    </Component>
+    <Component class="javax.swing.JLabel" name="label1">
     </Component>
   </SubComponents>
 </Form>

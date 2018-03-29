@@ -5,17 +5,37 @@
  */
 package othelloriversgame;
 
+import java.awt.Color;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author yigido
  */
+
 public class Game extends javax.swing.JFrame {
 
     /**
      * Creates new form Game
      */
+    JButton[][] buttons = new JButton[8][8];
+    int count = 1;
+    JButton buton;
+   
     public Game() {
+        
         initComponents();
+        
+        buttons();
+        listeners();
+        
+        buttons[3][3].setBackground(Color.yellow);
+        buttons[3][4].setBackground(Color.black);
+        buttons[4][3].setBackground(Color.yellow);
+        buttons[4][4].setBackground(Color.black);
+            
        
     }
 
@@ -55,8 +75,8 @@ public class Game extends javax.swing.JFrame {
         buton33 = new javax.swing.JButton();
         buton34 = new javax.swing.JButton();
         buton35 = new javax.swing.JButton();
-        buton36 = new javax.swing.JButton();
         buton37 = new javax.swing.JButton();
+        buton36 = new javax.swing.JButton();
         buton38 = new javax.swing.JButton();
         buton39 = new javax.swing.JButton();
         buton40 = new javax.swing.JButton();
@@ -92,48 +112,19 @@ public class Game extends javax.swing.JFrame {
         buton6 = new javax.swing.JButton();
         buton7 = new javax.swing.JButton();
         buton8 = new javax.swing.JButton();
+        label1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton12ActionPerformed(evt);
+        buton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
             }
         });
 
-        buton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton13ActionPerformed(evt);
-            }
-        });
-
-        buton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton14ActionPerformed(evt);
-            }
-        });
-
-        buton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton15ActionPerformed(evt);
-            }
-        });
-
-        buton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton16ActionPerformed(evt);
-            }
-        });
-
-        buton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton22ActionPerformed(evt);
-            }
-        });
-
-        buton34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buton34ActionPerformed(evt);
+        buton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
             }
         });
 
@@ -144,24 +135,27 @@ public class Game extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buton1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                    .addComponent(buton57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buton26, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                    .addComponent(buton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buton1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(buton57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buton26, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(buton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -179,7 +173,7 @@ public class Game extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buton35, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(buton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buton43, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,7 +189,7 @@ public class Game extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -296,8 +290,8 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton33, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .addComponent(buton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -331,41 +325,411 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton64, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
+                .addGap(18, 18, 18)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton15ActionPerformed
+    private void buton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton10MouseClicked
 
-    private void buton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton12ActionPerformed
+         buton = (JButton) evt.getSource();
 
-    private void buton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton13ActionPerformed
+         if(buton.getBackground() != Color.BLACK && buton.getBackground() != Color.YELLOW){           
+           sequenceControl();
+         }
+         
+    }//GEN-LAST:event_buton10MouseClicked
 
-    private void buton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton14ActionPerformed
-
-    private void buton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton22ActionPerformed
-
-    private void buton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton16ActionPerformed
-
-    private void buton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buton34ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buton34ActionPerformed
-
+     /*
+        bütün butonlar buton10 un listenerına referans ettilirmiştir. Bu sayede hangi butona basılırsa basılsın 
+        sadece buton10 listenerına yazılan kodlar çalıştırılıyor.
+     */
+    
+    
+     public void listeners(){
+         
+          buton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+          
+          
+           buton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+           
+            buton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+             buton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+             
+             
+             buton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+             
+             
+            buton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });  
+            
+             buton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+             
+            buton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });  
+            
+           
+             
+             buton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+             
+             
+             buton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+             
+              buton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+              
+             buton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });  
+             
+             buton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+             
+             buton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+             
+            buton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });  
+            
+            buton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+            
+            buton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+         
+            buton30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+         
+            buton38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+           
+             
+            buton46.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton47.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton48.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton49.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton50.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            buton52.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            buton53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton54.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            buton55.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton56.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            buton57.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            buton58.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton59.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton60.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton62.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        });
+            
+            
+            buton63.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+            
+            
+            buton64.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buton10MouseClicked(evt);
+            }
+        }); 
+     }
+     
+     public void buttons(){
+        buttons[0][0] = buton1;   buttons[0][1] = buton2;   buttons[0][2] = buton3;   buttons[0][3] = buton4;   buttons[0][4] = buton5;   buttons[0][5] = buton6;  buttons[0][6] = buton7;   buttons[0][7] = buton8; 
+        buttons[1][0] = buton9;   buttons[1][1] = buton10;  buttons[1][2] = buton11;  buttons[1][3] = buton12;  buttons[1][4] = buton13;  buttons[1][5] = buton14; buttons[1][6] = buton15;  buttons[1][7] = buton16;
+        buttons[2][0] = buton17;  buttons[2][1] = buton18;  buttons[2][2] = buton19;  buttons[2][3] = buton20;  buttons[2][4] = buton21;  buttons[2][5] = buton22; buttons[2][6] = buton23;  buttons[2][7] = buton24;
+        buttons[3][0] = buton25;  buttons[3][1] = buton26;  buttons[3][2] = buton27;  buttons[3][3] = buton28;  buttons[3][4] = buton29;  buttons[3][5] = buton30; buttons[3][6] = buton31;  buttons[3][7] = buton32;
+        buttons[4][0] = buton33;  buttons[4][1] = buton34;  buttons[4][2] = buton35;  buttons[4][3] = buton37;  buttons[4][4] = buton36;  buttons[4][5] = buton38; buttons[4][6] = buton39;  buttons[4][7] = buton40;
+        buttons[5][0] = buton41;  buttons[5][1] = buton42;  buttons[5][2] = buton43;  buttons[5][3] = buton44;  buttons[5][4] = buton45;  buttons[5][5] = buton46; buttons[5][6] = buton47;  buttons[5][7] = buton48;
+        buttons[6][0] = buton49;  buttons[6][1] = buton50;  buttons[6][2] = buton51;  buttons[6][3] = buton52;  buttons[6][4] = buton53;  buttons[6][5] = buton54; buttons[6][6] = buton55;  buttons[6][7] = buton56;
+        buttons[7][0] = buton57;  buttons[7][1] = buton58;  buttons[7][2] = buton59;  buttons[7][3] = buton60;  buttons[7][4] = buton61;  buttons[7][5] = buton62; buttons[7][6] = buton63;  buttons[7][7] = buton64;
+     }
+     
+     /*
+     Bu metot oyun sırası bir sarıya bir siyaha geçmesi gerektiğinin kontrolünü 
+     yapmaktadır. Bu kontrol count değişkeni artırılarak tek sayılar geldiğinde oyun sırasını sarı renge
+     çift sayı geldiğinde oyun sırasını siyah renge vermektedir.
+     */
+     
+     
+     public void sequenceControl(){
+         
+        if(count % 2 == 1){
+            buton.setBackground(Color.yellow);
+            count ++;
+         
+        }
+        else if (count % 2 == 0){
+            buton.setBackground(Color.black);
+            count ++;
+          
+        } 
+     }
+     
+   
     /**
+     * 
+     * 
+    
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -465,5 +829,6 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JButton buton7;
     private javax.swing.JButton buton8;
     private javax.swing.JButton buton9;
+    private javax.swing.JLabel label1;
     // End of variables declaration//GEN-END:variables
 }
