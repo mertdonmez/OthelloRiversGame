@@ -6,8 +6,9 @@
 package othelloriversgame;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.net.URL;
-import javax.swing.ImageIcon;
+import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
@@ -20,24 +21,87 @@ public class Game extends javax.swing.JFrame {
     /**
      * Creates new form Game
      */
+    
     JButton[][] buttons = new JButton[8][8];
+    Boolean[][] control = new Boolean[8][8];
+    Point pp = new Point();
+    Point pp1 = new Point();
+    Point ppp[][] = new Point[8][8];
+    Point pYellow[][] = new Point[8][8];
+    Point pBlack[][] = new Point[8][8];
+    int dizi[][] = new int [8][8];
+    
+    final static Color DEFAULT_COLOR = Color.LIGHT_GRAY;
+    
     int count = 1;
+    int count1 =0;
     JButton buton;
-   
+    ArrayList <JButton> buttonYellow = new ArrayList<>();
+    ArrayList <JButton> buttonBlack = new ArrayList<>();
+    
     public Game() {
         
         initComponents();
         
         buttons();
         listeners();
+       
+        for (JButton[] btns : buttons) {
+            for (JButton button : btns) {
+                button.setBackground(DEFAULT_COLOR);
+            }
+        }
+        
+        // Oyun başlangıcında oyun kuralı olarak ortada bulunan 4 taşın default olarak konulması gerekmektedir.
         
         buttons[3][3].setBackground(Color.yellow);
         buttons[3][4].setBackground(Color.black);
-        buttons[4][3].setBackground(Color.yellow);
-        buttons[4][4].setBackground(Color.black);
+        buttons[4][3].setBackground(Color.black);
+        buttons[4][4].setBackground(Color.yellow);
+        
             
-       
+        control[3][3] = false; control[3][4] = false;  control[4][3] = false; control[4][4] = false;
+        
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+              if(control[i][j]!=control[3][3] && control[i][j]!=control[3][4] && control[i][j]!=control[4][3] && control[i][j]!=control[4][4]){
+                  control[i][j]=true;
+              }
+            }
+        }
+        
+        Point p = new Point(3, 3);
+        ppp[3][3]=p;
+        pYellow[3][3] = p;
+        Point p1 = new Point(3, 4);
+        ppp[3][4]=p1;
+       Point p2 = new Point(4, 3);
+       ppp[4][3]=p2;
+       Point p3= new Point(4, 4);
+        ppp[4][4]=p3;
+        pYellow[4][4] = p3;
+        
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                dizi[i][j]=0;
+            }
+        }
+        
+        
+      visibility();    
+      visibility1();
+      visibility2();
+      visibility3();
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                System.out.println("pYellow "+pYellow[i][j]);
+//            }
+//        }
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,8 +147,8 @@ public class Game extends javax.swing.JFrame {
         buton41 = new javax.swing.JButton();
         buton42 = new javax.swing.JButton();
         buton43 = new javax.swing.JButton();
-        buton44 = new javax.swing.JButton();
         buton45 = new javax.swing.JButton();
+        buton44 = new javax.swing.JButton();
         buton46 = new javax.swing.JButton();
         buton47 = new javax.swing.JButton();
         buton48 = new javax.swing.JButton();
@@ -107,8 +171,8 @@ public class Game extends javax.swing.JFrame {
         buton1 = new javax.swing.JButton();
         buton2 = new javax.swing.JButton();
         buton3 = new javax.swing.JButton();
-        buton4 = new javax.swing.JButton();
         buton5 = new javax.swing.JButton();
+        buton4 = new javax.swing.JButton();
         buton6 = new javax.swing.JButton();
         buton7 = new javax.swing.JButton();
         buton8 = new javax.swing.JButton();
@@ -177,7 +241,7 @@ public class Game extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buton43, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(buton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buton51, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +254,7 @@ public class Game extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
@@ -202,11 +266,11 @@ public class Game extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buton13, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buton30, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
@@ -247,8 +311,8 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton8, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
@@ -300,8 +364,8 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton41, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton42, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton43, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buton44, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton45, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buton44, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton46, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton47, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buton48, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -335,20 +399,91 @@ public class Game extends javax.swing.JFrame {
 
     private void buton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton10MouseClicked
 
-         buton = (JButton) evt.getSource();
+        buton = (JButton) evt.getSource();
 
-         if(buton.getBackground() != Color.BLACK && buton.getBackground() != Color.YELLOW){           
-           sequenceControl();
-         }
+        
+       // Location tutmak için buton dizisinde ki butonun location ı ile bastıgım butonun location ı 
+       // eşleşiyor ise butonun bulunduğu yerin dizi içerisindeki koordinatlarını bulma kontrolü yapıldı.
+       
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(buttons[i][j].getX() == buton.getX() && buttons[i][j].getY() == buton.getY())
+                {
+                    pp.x = i;
+                    pp.y = j;
+                    ppp[i][j] = pp;
+                   
+                }
+            }
+        }       
+        
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(buttons[i][j].getX() == buton.getX() && buttons[i][j].getY() == buton.getY()
+                   && buton.getBackground() != Color.BLACK && buton.getBackground() != Color.YELLOW)
+                {
+                    if(count%2==1)
+                    {
+                         pp1.x = i;
+                         pp1.y = j;
+                         pYellow[i][j]=pp1;
+                    System.out.println("pYellow :"+pYellow[i][j]);
+                    
+                    }
+                    else if(count%2==0)
+                    {
+                         pp1.x = i;
+                         pp1.y = j;
+                         pBlack[i][j]=pp1;
+                    System.out.println("pBlack :"+pBlack[i][j]);
+                    }
+                   
+                }
+            }
+        }
+        
+        
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(buttons[pp.x][pp.y].getBackground() != Color.BLACK  && buttons[pp.x][pp.y].getBackground() != Color.YELLOW){
+              control[pp.x][pp.y]=false;
+              
+          }
+            }
+        }
+          
+          
+        //Burada ki kontrol ise eğer bir butona daha önceden basılarak hamle yapıldı ise 
+        //aynı butona ikinci bir hamle şansının verilmesinin önüne geçmek için yapılmıştır.
+       
+        if(buton.getBackground() != Color.BLACK && buton.getBackground() != Color.YELLOW)
+        {           
+            sequenceControl();
+        }
          
+                buttonLists();
+            
+                        
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                System.out.println(pYellow[i][j]);
+//            }
+//        }
+
+           visibility();
+           visibility1();
+           visibility2();
+           visibility3();
+               
+
+                
     }//GEN-LAST:event_buton10MouseClicked
 
-     /*
-        bütün butonlar buton10 un listenerına referans ettilirmiştir. Bu sayede hangi butona basılırsa basılsın 
-        sadece buton10 listenerına yazılan kodlar çalıştırılıyor.
-     */
-    
-    
+    // bütün butonlar buton10 un listenerına referans ettilirmiştir. Bu sayede hangi butona basılırsa basılsın 
+    // sadece buton10 listenerına yazılan kodlar çalıştırılıyor.
+        
      public void listeners(){
          
           buton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -370,14 +505,14 @@ public class Game extends javax.swing.JFrame {
             }
         });
             
-             buton4.addMouseListener(new java.awt.event.MouseAdapter() {
+             buton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buton10MouseClicked(evt);
             }
         });
              
              
-             buton5.addMouseListener(new java.awt.event.MouseAdapter() {
+             buton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buton10MouseClicked(evt);
             }
@@ -562,14 +697,14 @@ public class Game extends javax.swing.JFrame {
                 buton10MouseClicked(evt);
             }
         });
-            buton44.addMouseListener(new java.awt.event.MouseAdapter() {
+            buton45.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buton10MouseClicked(evt);
             }
         });
             
             
-            buton45.addMouseListener(new java.awt.event.MouseAdapter() {
+            buton44.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buton10MouseClicked(evt);
             }
@@ -693,23 +828,25 @@ public class Game extends javax.swing.JFrame {
         }); 
      }
      
+     
+    // Bütün butonlar hamle kontrolleri yapılırken 
+    // kolaylık sağlanması için bir buton dizisinin içine atılmıştır.
+     
+     
      public void buttons(){
         buttons[0][0] = buton1;   buttons[0][1] = buton2;   buttons[0][2] = buton3;   buttons[0][3] = buton4;   buttons[0][4] = buton5;   buttons[0][5] = buton6;  buttons[0][6] = buton7;   buttons[0][7] = buton8; 
         buttons[1][0] = buton9;   buttons[1][1] = buton10;  buttons[1][2] = buton11;  buttons[1][3] = buton12;  buttons[1][4] = buton13;  buttons[1][5] = buton14; buttons[1][6] = buton15;  buttons[1][7] = buton16;
         buttons[2][0] = buton17;  buttons[2][1] = buton18;  buttons[2][2] = buton19;  buttons[2][3] = buton20;  buttons[2][4] = buton21;  buttons[2][5] = buton22; buttons[2][6] = buton23;  buttons[2][7] = buton24;
         buttons[3][0] = buton25;  buttons[3][1] = buton26;  buttons[3][2] = buton27;  buttons[3][3] = buton28;  buttons[3][4] = buton29;  buttons[3][5] = buton30; buttons[3][6] = buton31;  buttons[3][7] = buton32;
-        buttons[4][0] = buton33;  buttons[4][1] = buton34;  buttons[4][2] = buton35;  buttons[4][3] = buton37;  buttons[4][4] = buton36;  buttons[4][5] = buton38; buttons[4][6] = buton39;  buttons[4][7] = buton40;
+        buttons[4][0] = buton33;  buttons[4][1] = buton34;  buttons[4][2] = buton35;  buttons[4][3] = buton36;  buttons[4][4] = buton37;  buttons[4][5] = buton38; buttons[4][6] = buton39;  buttons[4][7] = buton40;
         buttons[5][0] = buton41;  buttons[5][1] = buton42;  buttons[5][2] = buton43;  buttons[5][3] = buton44;  buttons[5][4] = buton45;  buttons[5][5] = buton46; buttons[5][6] = buton47;  buttons[5][7] = buton48;
         buttons[6][0] = buton49;  buttons[6][1] = buton50;  buttons[6][2] = buton51;  buttons[6][3] = buton52;  buttons[6][4] = buton53;  buttons[6][5] = buton54; buttons[6][6] = buton55;  buttons[6][7] = buton56;
         buttons[7][0] = buton57;  buttons[7][1] = buton58;  buttons[7][2] = buton59;  buttons[7][3] = buton60;  buttons[7][4] = buton61;  buttons[7][5] = buton62; buttons[7][6] = buton63;  buttons[7][7] = buton64;
      }
      
-     /*
-     Bu metot oyun sırası bir sarıya bir siyaha geçmesi gerektiğinin kontrolünü 
-     yapmaktadır. Bu kontrol count değişkeni artırılarak tek sayılar geldiğinde oyun sırasını sarı renge
-     çift sayı geldiğinde oyun sırasını siyah renge vermektedir.
-     */
-     
+    // Bu metot oyun sırası bir sarıya bir siyaha geçmesi gerektiğinin kontrolünü 
+    // yapmaktadır. Bu kontrol count değişkeni artırılarak tek sayılar geldiğinde oyun sırasını sarı renge
+    // çift sayı geldiğinde oyun sırasını siyah renge vermektedir.
      
      public void sequenceControl(){
          
@@ -725,7 +862,358 @@ public class Game extends javax.swing.JFrame {
         } 
      }
      
-   
+     public void checkButtonsAround(Point p)
+     {
+        if(buton.getBackground() == Color.YELLOW)
+        {
+            
+        }
+     }
+     
+     public void visibility (){
+         int temp ;
+         for (int i = 0; i < 8; i++) {
+             for (int j = 0; j < 8; j++) {
+                 if(count%2==1){
+                 if(buttons[i][j].getBackground() == Color.YELLOW)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp-1][j].getBackground() == Color.BLACK)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+             }
+                 else if(count %2 == 0)
+                 {
+                     
+                     for (int k = 0; k < 8; k++) {
+                         for (int l = 0; l < 8; l++) {
+                             if(dizi[k][l]==1){
+                                dizi[k][l]=0;
+                             }
+                         }
+                     }
+                     if(buttons[i][j].getBackground() == Color.BLACK)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp-1][j].getBackground() == Color.YELLOW)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+                 }
+         }
+         }
+     }
+     
+     public void visibility1 (){
+         int temp ;
+         for (int i = 0; i < 8; i++) {
+             for (int j = 0; j < 8; j++) {
+                 if(count%2==1){
+                 if(buttons[i][j].getBackground() == Color.YELLOW)
+                 {
+                     temp = j;
+                         while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[i][temp].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[i][temp-1].getBackground() == Color.BLACK)
+                             buttons[i][temp].setEnabled(true);
+                             dizi[i][temp] = 1;
+                         }
+                           
+                 }
+             }
+                  else if(count %2 == 0)
+                 {
+                      for (int k = 0; k < 8; k++) {
+                         for (int l = 0; l < 8; l++) {
+                             if(dizi[k][l]==1){
+                                dizi[k][l]=0;
+                             }
+                         }
+                     }
+                     if(buttons[i][j].getBackground() == Color.BLACK)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp-1][j].getBackground() == Color.YELLOW)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+                 }
+             }
+         }
+     }
+     
+     public void visibility2 (){
+         int temp ;
+         for (int i = 0; i < 8; i++) {
+             for (int j = 0; j < 8; j++) {
+                 if(count %2 == 1){
+                 if(buttons[i][j].getBackground() == Color.YELLOW)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp--;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp+1][j].getBackground() == Color.BLACK)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+             }
+                  else if(count %2 == 0)
+                 {
+                      for (int k = 0; k < 8; k++) {
+                         for (int l = 0; l < 8; l++) {
+                             if(dizi[k][l]==1){
+                                dizi[k][l]=0;
+                             }
+                         }
+                     }
+                     if(buttons[i][j].getBackground() == Color.BLACK)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp-1][j].getBackground() == Color.YELLOW)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+                 }
+             }
+         }
+     }
+     
+     public void visibility3 (){
+         int temp ;
+         for (int i = 0; i < 8; i++) {
+             for (int j = 0; j < 8; j++) {
+                 if(count%2==1){
+                 if(buttons[i][j].getBackground() == Color.YELLOW)
+                 {
+                     temp = j;
+                         while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp--;
+                             
+                         }
+                         
+                         if(buttons[i][temp].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[i][temp+1].getBackground() == Color.BLACK)
+                             buttons[i][temp].setEnabled(true);
+                             dizi[i][temp] = 1;
+                         }
+                           
+                 }
+             }
+                  else if(count %2 == 0)
+                 {
+                      for (int k = 0; k < 8; k++) {
+                         for (int l = 0; l < 8; l++) {
+                             if(dizi[k][l]==1){
+                                dizi[k][l]=0;
+                             }
+                         }
+                     }
+                     if(buttons[i][j].getBackground() == Color.BLACK)
+                 {
+                     temp = i;
+                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
+                         {
+                            
+                             for (int k = 0; k < 8; k++) {
+                                 for (int l = 0; l < 8; l++) {
+                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
+                                    
+                                             buttons[k][l].setEnabled(false);
+                                        
+                             }  
+                             }
+                             }
+                              temp++;
+                             
+                         }
+                         
+                         if(buttons[temp][j].getBackground() == DEFAULT_COLOR)
+                         { 
+                             if(buttons[temp-1][j].getBackground() == Color.YELLOW)
+                             buttons[temp][j].setEnabled(true);
+                             dizi[temp][j] = 1;
+                         }
+                           
+                 }
+                 }
+             }
+         }
+     }
+     
+     
+     
+     
+     // Burada sarı rengi kullanan oyuncu ve siyah rengi kullanan oyuncuların taşlarının sayısının
+     // hesaplanması hedef alınmıştır. Bu işlem taş yeme işleminin kontrolü için gereklidir.
+     
+     public void buttonLists()
+     {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+               if(buttons[i][j].getBackground() == Color.YELLOW)
+               {
+                   if( control[i][j]==false){
+                        buttonYellow.add(buttons[i][j]);
+                   control[i][j]=true;
+                   }
+                   
+               }
+               else if(buttons[i][j].getBackground() == Color.BLACK)
+               {
+                   if(control[i][j] == false){
+                       buttonBlack.add(buttons[i][j]);
+                   control[i][j]=true;
+                   }
+                   
+               }
+            }
+        }  
+     }
+     
+     
+     
+     public Point donder(JButton buton)
+     {
+         Point pDonder = new Point();
+           for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(buttons[i][j].getX() == buton.getX() && buttons[i][j].getY() == buton.getY())
+                {
+                    pDonder.x = i;
+                    pDonder.y = j;
+                    
+                }
+            }
+        }
+           return pDonder.getLocation();
+     }
     /**
      * 
      * 
