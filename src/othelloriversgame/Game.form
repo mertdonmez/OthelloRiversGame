@@ -80,12 +80,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="buton51" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buton53" max="32767" attributes="0"/>
+                              <Component id="buton52" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="buton59" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buton61" max="32767" attributes="0"/>
+                              <Component id="buton60" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -93,8 +93,8 @@
                           <Component id="buton29" max="32767" attributes="0"/>
                           <Component id="buton37" max="32767" attributes="0"/>
                           <Component id="buton45" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buton52" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buton60" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buton53" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buton61" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -129,26 +129,31 @@
                   <Component id="buton6" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buton31" pref="81" max="32767" attributes="0"/>
-                  <Component id="buton15" max="32767" attributes="0"/>
-                  <Component id="buton23" max="32767" attributes="0"/>
-                  <Component id="buton39" max="32767" attributes="0"/>
-                  <Component id="buton47" max="32767" attributes="0"/>
-                  <Component id="buton55" max="32767" attributes="0"/>
-                  <Component id="buton63" max="32767" attributes="0"/>
-                  <Component id="buton7" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buton16" pref="81" max="32767" attributes="0"/>
-                  <Component id="buton24" max="32767" attributes="0"/>
-                  <Component id="buton32" max="32767" attributes="0"/>
-                  <Component id="buton40" max="32767" attributes="0"/>
-                  <Component id="buton48" max="32767" attributes="0"/>
-                  <Component id="buton56" max="32767" attributes="0"/>
-                  <Component id="buton64" max="32767" attributes="0"/>
-                  <Component id="buton8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buton31" pref="81" max="32767" attributes="0"/>
+                          <Component id="buton15" max="32767" attributes="0"/>
+                          <Component id="buton23" max="32767" attributes="0"/>
+                          <Component id="buton39" max="32767" attributes="0"/>
+                          <Component id="buton47" max="32767" attributes="0"/>
+                          <Component id="buton55" max="32767" attributes="0"/>
+                          <Component id="buton63" max="32767" attributes="0"/>
+                          <Component id="buton7" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buton16" pref="81" max="32767" attributes="0"/>
+                          <Component id="buton24" max="32767" attributes="0"/>
+                          <Component id="buton32" max="32767" attributes="0"/>
+                          <Component id="buton40" max="32767" attributes="0"/>
+                          <Component id="buton48" max="32767" attributes="0"/>
+                          <Component id="buton56" max="32767" attributes="0"/>
+                          <Component id="buton64" max="32767" attributes="0"/>
+                          <Component id="buton8" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="label2" min="-2" pref="107" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="59" max="32767" attributes="0"/>
           </Group>
@@ -234,8 +239,8 @@
                   <Component id="buton49" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton50" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton51" min="-2" pref="58" max="-2" attributes="0"/>
-                  <Component id="buton52" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton53" min="-2" pref="58" max="-2" attributes="0"/>
+                  <Component id="buton52" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton54" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton55" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="buton56" min="-2" pref="58" max="-2" attributes="0"/>
@@ -245,14 +250,17 @@
                   <Component id="buton57" max="32767" attributes="0"/>
                   <Component id="buton58" max="32767" attributes="0"/>
                   <Component id="buton59" max="32767" attributes="0"/>
-                  <Component id="buton60" max="32767" attributes="0"/>
                   <Component id="buton61" max="32767" attributes="0"/>
+                  <Component id="buton60" max="32767" attributes="0"/>
                   <Component id="buton62" max="32767" attributes="0"/>
                   <Component id="buton63" max="32767" attributes="0"/>
                   <Component id="buton64" pref="58" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="label1" min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="label1" pref="21" max="32767" attributes="0"/>
+                  <Component id="label2" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -351,9 +359,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="buton51">
     </Component>
-    <Component class="javax.swing.JButton" name="buton52">
-    </Component>
     <Component class="javax.swing.JButton" name="buton53">
+    </Component>
+    <Component class="javax.swing.JButton" name="buton52">
     </Component>
     <Component class="javax.swing.JButton" name="buton54">
     </Component>
@@ -367,9 +375,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="buton59">
     </Component>
-    <Component class="javax.swing.JButton" name="buton60">
-    </Component>
     <Component class="javax.swing.JButton" name="buton61">
+    </Component>
+    <Component class="javax.swing.JButton" name="buton60">
     </Component>
     <Component class="javax.swing.JButton" name="buton62">
     </Component>
@@ -394,6 +402,8 @@
     <Component class="javax.swing.JButton" name="buton8">
     </Component>
     <Component class="javax.swing.JLabel" name="label1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="label2">
     </Component>
   </SubComponents>
 </Form>
