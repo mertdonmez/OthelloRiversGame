@@ -9,14 +9,16 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JButton;
-
+import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author yigido
  */
 
 public class Game extends javax.swing.JFrame {
-
+  
     /**
      * Creates new form Game
      */
@@ -32,6 +34,7 @@ public class Game extends javax.swing.JFrame {
      JButton[][] buttonsYellowAsagi = new JButton[8][8];
     Boolean[][] control = new Boolean[8][8];
     Boolean[][] Enabledcontrol = new Boolean[8][8];
+    Boolean[][] Enabledcontrol1 = new Boolean[8][8];
     Point pp = new Point();
     Point pp1 = new Point();
     Point ppp[][] = new Point[8][8];
@@ -39,10 +42,14 @@ public class Game extends javax.swing.JFrame {
     Point pBlack[][] = new Point[8][8];
     int dizi[][] = new int [8][8];
     
+   
+    
     final static Color DEFAULT_COLOR = Color.LIGHT_GRAY;
     
     int count = 1;
     int count1 =0;
+    int countSari = 2;
+    int countSiyah = 2;
     JButton buton;
     ArrayList <JButton> buttonYellow = new ArrayList<>();
     ArrayList <JButton> buttonBlack = new ArrayList<>();
@@ -53,9 +60,14 @@ public class Game extends javax.swing.JFrame {
         
         buttons();
         listeners();
-       
-         label1.setText("Oyun Sırası : SARI");
         
+        jLabel1.setForeground(Color.BLUE);
+        jLabel3.setText("");
+       
+         label1.setText("Oyun Sırası");
+         label2.setText("Oyun Sırası");
+         jButton1.setBackground(Color.YELLOW);
+         
         for (JButton[] btns : buttons) {
             for (JButton button : btns) {
                 button.setBackground(DEFAULT_COLOR);
@@ -69,7 +81,8 @@ public class Game extends javax.swing.JFrame {
         buttons[4][3].setBackground(Color.black);
         buttons[4][4].setBackground(Color.yellow);
         
-       
+       jLabel4.setText(String.valueOf(countSari));
+        jLabel5.setText(String.valueOf(countSiyah));
           
         control[3][3] = false; control[3][4] = false;  control[4][3] = false; control[4][4] = false;
         
@@ -81,19 +94,7 @@ public class Game extends javax.swing.JFrame {
               }
             }
         }
-//        
-//        Point p = new Point(3, 3);
-//        ppp[3][3]=p;
-//        pYellow[3][3] = p;
-//        Point p1 = new Point(3, 4);
-//        ppp[3][4]=p1;
-//       Point p2 = new Point(4, 3);
-//       ppp[4][3]=p2;
-//       Point p3= new Point(4, 4);
-//        ppp[4][4]=p3;
-//        pYellow[4][4] = p3;
-        
-        
+
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 dizi[i][j]=0;
@@ -105,27 +106,14 @@ public class Game extends javax.swing.JFrame {
       visibilityYukari();
       visibilitySola();
       
-      
        dizi[3][3] = 1;
         dizi[4][4] = 1;
         dizi[3][4] = 2;
         dizi[4][3] = 2;
         
-     // visibilitySolCaprazYukari();
-//         
-//     for (int i = 0; i < 8; i++) {
-//            for (int j = 0; j < 8; j++) {
-//                System.out.println(i + " " + j +" "+ dizi[i][j]);
-//            }
-//        }
-//     
-//     
-//        System.out.println("------------------------------------------------------------------------------");
-      
+       
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -201,6 +189,15 @@ public class Game extends javax.swing.JFrame {
         buton8 = new javax.swing.JButton();
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,10 +213,25 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("OTHELLO RIVERS GAME");
+        jLabel1.setMaximumSize(new java.awt.Dimension(150, 20));
+
+        jLabel2.setText(">>>");
+
+        jLabel3.setText("<<<");
+
+        jLabel6.setText("PUAN");
+
+        jLabel7.setText("PUAN");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(300, 300, 300))
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -243,58 +255,71 @@ public class Game extends javax.swing.JFrame {
                             .addComponent(buton50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buton19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buton20, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buton21, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton27, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buton19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton28, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(buton20, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buton21, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton35, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buton11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(buton12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(buton13, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                    .addComponent(buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton43, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton51, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton59, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buton27, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buton28, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buton35, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buton43, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buton51, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buton52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buton59, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buton60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buton45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buton53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buton61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buton13, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(buton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buton30, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
@@ -304,10 +329,12 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buton31, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                             .addComponent(buton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -316,24 +343,39 @@ public class Game extends javax.swing.JFrame {
                             .addComponent(buton47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buton63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buton16, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(buton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buton16, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(buton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -416,10 +458,14 @@ public class Game extends javax.swing.JFrame {
                     .addComponent(buton62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buton64, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -429,7 +475,9 @@ public class Game extends javax.swing.JFrame {
     private void buton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buton10MouseClicked
 
         buton = (JButton) evt.getSource();
-
+        
+        countSari = 0;
+        countSiyah = 0;
         
        // Location tutmak için buton dizisinde ki butonun location ı ile bastıgım butonun location ı 
        // eşleşiyor ise butonun bulunduğu yerin dizi içerisindeki koordinatlarını bulma kontrolü yapıldı.
@@ -446,7 +494,6 @@ public class Game extends javax.swing.JFrame {
 //            }
 //        }       
         
-        
 //        for (int i = 0; i < 8; i++) {
 //            for (int j = 0; j < 8; j++) {
 //                if(buttons[i][j].getX() == buton.getX() && buttons[i][j].getY() == buton.getY()
@@ -457,7 +504,7 @@ public class Game extends javax.swing.JFrame {
 //                         pp1.x = i;
 //                         pp1.y = j;
 //                         pYellow[i][j]=pp1;
-//               //     System.out.println("pYellow :"+pYellow[i][j]);
+//                    System.out.println("pYellow :"+pYellow[i][j]);
 //                    
 //                    }
 //                    else if(count%2==0)
@@ -465,24 +512,19 @@ public class Game extends javax.swing.JFrame {
 //                         pp1.x = i;
 //                         pp1.y = j;
 //                         pBlack[i][j]=pp1;
-//                //    System.out.println("pBlack :"+pBlack[i][j]);
+//                    System.out.println("pBlack :"+pBlack[i][j]);
 //                    }
-//                   
 //                }
 //            }
 //        }
-        
-        
         
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if(buttons[pp.x][pp.y].getBackground() != Color.BLACK  && buttons[pp.x][pp.y].getBackground() != Color.YELLOW){
               control[pp.x][pp.y]=false;
-              
           }
             }
         }
-          
           
         //Burada ki kontrol ise eğer bir butona daha önceden basılarak hamle yapıldı ise 
         //aynı butona ikinci bir hamle şansının verilmesinin önüne geçmek için yapılmıştır.
@@ -492,23 +534,42 @@ public class Game extends javax.swing.JFrame {
             sequenceControl();
         }
          
-        buttonLists();
+       buttonLists();
+       
+                    yeYukari2();
+                    yeSola2();
+                    yeSaga2();
+                    yeAsagi2();
+                    visibilityAsagi();    
+                    visibilitySaga();
+                    visibilityYukari();
+                    visibilitySola();
+       
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(buttons[i][j].getBackground() == Color.YELLOW){
+                    countSari++; 
+                    jLabel4.setText(String.valueOf(countSari));
+                }
+                else if(buttons[i][j].getBackground() == Color.BLACK){
+                    countSiyah++;
+                     jLabel5.setText(String.valueOf(countSiyah));
+                }
+            }
+        }
         
-       
-      
-       yeYukari2();
-       yeSola2();
-       yeSaga2();
-       yeAsagi2();
-       visibilityAsagi();    
-       visibilitySaga();
-       visibilityYukari();
-       visibilitySola();
-     
-        //visibilitySolCaprazYukari();
-       
- 
+          if(countSari >= 20){
+               JOptionPane.showMessageDialog(this, "Kazanan Sarı Oyuncu");
+               this.setVisible(false);
+               
+          }
+          else if(countSiyah >= 20){
+              JOptionPane.showMessageDialog(this, "Kazanan Siyah Oyuncu");
+              this.setVisible(false);
+          }
                 
+              
+       
     }//GEN-LAST:event_buton10MouseClicked
 
     // bütün butonlar buton10 un listenerına referans ettilirmiştir. Bu sayede hangi butona basılırsa basılsın 
@@ -888,16 +949,20 @@ public class Game extends javax.swing.JFrame {
         if(count % 2 == 1){
             buton.setBackground(Color.yellow);
             count ++;
-             label1.setText("");
-            label2.setText("Oyun Sırası : SİYAH");
+            jButton2.setBackground(Color.BLACK);
+            jButton1.setBackground(DEFAULT_COLOR);
+            jLabel3.setText("<<<");
+            jLabel2.setText("");
          
         }
         else if (count % 2 == 0){
             buton.setBackground(Color.black);
             count ++;
-             label1.setText("Oyun Sırası : SARI");
-            label2.setText("");
-           
+            jButton1.setBackground(Color.YELLOW);
+            jButton2.setBackground(DEFAULT_COLOR);
+             jLabel2.setText(">>>");
+            jLabel3.setText("");
+            
         } 
      }
      
@@ -909,6 +974,9 @@ public class Game extends javax.swing.JFrame {
                  if(buttons[i][j].getBackground() == Color.YELLOW)
                  {
                      temp = i;
+                     if(temp > 7){
+                                     return;
+                                 }
                          while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
@@ -924,7 +992,7 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp++;
-                              if(temp == 8)
+                              if(temp > 7)
                               {
                                   return;
                               }
@@ -940,10 +1008,12 @@ public class Game extends javax.swing.JFrame {
              }
                 else if(count %2 == 0)
                 {
-                     
                 if(buttons[i][j].getBackground() == Color.BLACK)
                 {
                      temp = i;
+                     if(temp > 7){
+                                     return;
+                                 }
                         while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
                         {
                             for (int k = 0; k < 8; k++)
@@ -961,7 +1031,7 @@ public class Game extends javax.swing.JFrame {
                                  }
                             }
                                                 temp++;
-                              if(temp == 8)
+                              if(temp > 7)
                               {
                                   return;
                               }
@@ -987,12 +1057,14 @@ public class Game extends javax.swing.JFrame {
                  if(buttons[i][j].getBackground() == Color.YELLOW)
                  {
                      temp = j;
+                     if(temp > 7){
+                                     return;
+                                 }
                          while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
                                  for (int l = 0; l < 8; l++) {
                                     if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
-                                        
                                               if(dizi[k][l] == 2 || dizi[k][l] == 0 )
                                             {
                                                 buttons[k][l].setEnabled(false);
@@ -1002,14 +1074,11 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp++;
-                              
-                               if(temp == 8)
+                               if(temp >7)
                               {
                                   return;
                               }
-                             
                          }
-                         
                          if(buttons[i][temp].getBackground() == DEFAULT_COLOR)
                          { 
                              if(buttons[i][temp-1].getBackground() == Color.BLACK)
@@ -1017,39 +1086,35 @@ public class Game extends javax.swing.JFrame {
                               Enabledcontrol[i][temp] = true;
                              dizi[i][temp] = 1;
                          }
-                           
                  }
              }
                   else if(count %2 == 0)
                  {
-                  
                      if(buttons[i][j].getBackground() == Color.BLACK)
                  {
                      temp = j;
+                     if(temp > 7){
+                                     return;
+                                 }
                          while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
                          {
-                            
                              for (int k = 0; k < 8; k++) {
                                  for (int l = 0; l < 8; l++) {
                                     if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 2){
-                                    
                                          if(dizi[k][l] == 1 || dizi[k][l] == 0 )
                                              {
                                                    buttons[k][l].setEnabled(false);
                                                     Enabledcontrol[k][l] = false;
                                              }
-                                        
                              }  
                              }
                              }
                               temp++;
-                               if(temp == 8)
+                               if(temp > 7)
                               {
                                   return;
                               }
-                             
                          }
-                         
                          if(buttons[i][temp].getBackground() == DEFAULT_COLOR)
                          { 
                              if(buttons[i][temp-1].getBackground() == Color.YELLOW)
@@ -1057,7 +1122,6 @@ public class Game extends javax.swing.JFrame {
                               Enabledcontrol[i][temp] = true;
                              dizi[i][temp] = 2;
                          }
-                           
                  }
                  }
              }
@@ -1072,6 +1136,10 @@ public class Game extends javax.swing.JFrame {
                  if(buttons[i][j].getBackground() == Color.YELLOW)
                  {
                      temp = i;
+                      if(temp < 0)
+                              {
+                                  return;
+                              }
                          while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
@@ -1087,7 +1155,7 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp--;
-                               if(temp == -1)
+                               if(temp < 0)
                               {
                                   return;
                               }
@@ -1106,6 +1174,10 @@ public class Game extends javax.swing.JFrame {
                      if(buttons[i][j].getBackground() == Color.BLACK)
                  {
                      temp = i;
+                      if(temp < 0)
+                              {
+                                  return;
+                              }
                          while(buttons[temp][j].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
@@ -1120,7 +1192,7 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp--;
-                               if(temp == -1)
+                               if(temp < 0)
                               {
                                   return;
                               }
@@ -1146,6 +1218,10 @@ public class Game extends javax.swing.JFrame {
                  if(buttons[i][j].getBackground() == Color.YELLOW)
                  {
                      temp = j;
+                      if(temp < 0)
+                              {
+                                  return;
+                              }
                          while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
@@ -1160,7 +1236,7 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp--;
-                               if(temp == -1)
+                               if(temp < 0)
                               {
                                   return;
                               }
@@ -1179,6 +1255,10 @@ public class Game extends javax.swing.JFrame {
                      if(buttons[i][j].getBackground() == Color.BLACK)
                  {
                      temp = j;
+                      if(temp < 0)
+                              {
+                                  return;
+                              }
                          while(buttons[i][temp].getBackground() != DEFAULT_COLOR )
                          {
                              for (int k = 0; k < 8; k++) {
@@ -1193,7 +1273,7 @@ public class Game extends javax.swing.JFrame {
                              }
                              }
                               temp--;
-                               if(temp == -1)
+                               if(temp < 0)
                               {
                                   return;
                               }
@@ -1211,185 +1291,6 @@ public class Game extends javax.swing.JFrame {
          }
      }
      
-     public void visibilitySolCaprazYukari (){
-         int temp , temp1 ;
-         for (int i = 0; i < 8; i++) {
-             for (int j = 0; j < 8; j++) {
-                 if(count%2==1){
-                 if(buttons[i][j].getBackground() == Color.YELLOW)
-                 {
-                     temp = i;
-                     temp1 = j;
-                         while(buttons[temp][temp1].getBackground() != DEFAULT_COLOR )
-                         {
-                             for (int k = 0; k < 8; k++) {
-                                 for (int l = 0; l < 8; l++) {
-                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 1){
-                                         buttons[k][l].setEnabled(false);
-                             }  
-                             }
-                             }
-                              temp--;
-                               temp1--;
-                         }
-                         if(buttons[temp][temp1].getBackground() == DEFAULT_COLOR)
-                         { 
-                             if(buttons[temp+1][temp1+1].getBackground() == Color.BLACK)
-                             buttons[temp][temp1].setEnabled(true);
-                             dizi[temp][temp1] = 1;
-                         }
-                 }
-             }
-                 else if(count %2 == 0)
-                 {
-                     
-                     if(buttons[i][j].getBackground() == Color.BLACK)
-                 {
-                     temp = i;
-                     temp1 = j;
-                         while(buttons[temp][temp1].getBackground() != DEFAULT_COLOR )
-                         {
-                             for (int k = 0; k < 8; k++) {
-                                 for (int l = 0; l < 8; l++) {
-                                    if(buttons[k][l].getBackground() != Color.YELLOW && buttons[k][l].getBackground() != Color.BLACK && dizi[k][l] != 2){
-                                            if(dizi[k][l] == 1 || dizi[k][l] == 0 )
-                                             {
-                                                   buttons[k][l].setEnabled(false);
-                                             }
-                             }  
-                             }
-                             }
-                              temp--;
-                              temp1--;
-                         }
-                         if(buttons[temp][temp1].getBackground() == DEFAULT_COLOR)
-                         { 
-                             if(buttons[temp+1][temp1+1].getBackground() == Color.YELLOW)
-                             buttons[temp][temp1].setEnabled(true);
-                             dizi[temp][temp1] = 2;
-                         } 
-                 }
-                 }
-         }
-         }
-     }
-     
-     public void yeAssagi (){
-         int temp ;
-         for (int i = 0; i < 8; i++) {
-             for (int j = 0; j < 8; j++) {
-                 if(buttons[i][j]==buton){
-                 if(buttons[i][j].getBackground() == Color.YELLOW)
-                 {
-                     temp = i+1;
-                         while(buttons[temp][j].getBackground() != Color.YELLOW )
-                         {
-                           if(buttons[temp][j].getBackground() == Color.BLACK){
-                               buttonsBlackYukari[temp][j] = buttons[temp][j]; 
-                           }
-                             temp++;
-                             if(temp == 8){
-                                 return;
-                             }
-                         }
-                         for (int k = 0; k < 8; k++) {
-                             for (int l = 0; l < 8; l++) {
-                                 if(buttonsBlackYukari[k][l] != null && buttonsBlackYukari[k][l].getBackground() == Color.BLACK){
-                                     buttons[k][l].setBackground(Color.YELLOW);
-                                     dizi[k][l]=1;
-                                 }
-                             }
-                     }
-                 }
-             
-             
-                 
-                   else if(buttons[i][j].getBackground() == Color.BLACK)
-                 {
-                     temp = i+1;
-                         while(buttons[temp][j].getBackground() != Color.BLACK )
-                         {
-                             if(buttons[temp][j].getBackground() == Color.YELLOW){
-                               buttonsYellowYukari[temp][j] = buttons[temp][j]; 
-                           }
-                              temp++;
-                              if(temp == 8)
-                              {
-                                  return;
-                              }
-                         }
-                              for (int k = 0; k < 8; k++) {
-                             for (int l = 0; l < 8; l++) {
-                                 if(buttonsYellowYukari[k][l] != null && buttonsYellowYukari[k][l].getBackground() == Color.YELLOW){
-                                     buttons[k][l].setBackground(Color.BLACK);
-                                     dizi[k][l]=2;
-                                 }
-                             }
-                     }
-                 }
-                 }
-         }
-         }
-     }
-     
-    public void yeSaga (){
-         int temp ;
-         for (int i = 0; i < 8; i++) {
-             for (int j = 0; j < 8; j++) {
-                 if(count%2==0){
-                 if(buttons[i][j].getBackground() == Color.YELLOW)
-                 {
-                     temp = j+1;
-                         while(buttons[i][temp].getBackground() != Color.YELLOW )
-                         {
-                           if(buttons[i][temp].getBackground() == Color.BLACK){
-                               buttonsBlackSola[i][temp] = buttons[i][temp]; 
-                           }
-                             temp++;
-                             if(temp == 8){
-                                 return;
-                             }
-                         }
-                         for (int k = 0; k < 8; k++) {
-                             for (int l = 0; l < 8; l++) {
-                                 if(buttonsBlackSola[k][l] != null && buttonsBlackSola[k][l].getBackground() == Color.BLACK){
-                                     buttons[k][l].setBackground(Color.YELLOW);
-                                     dizi[k][l]=1;
-                                 }
-                             }
-                     }
-                 }
-             }
-                 else if(count %2 == 1)
-                 {
-                     if(buttons[i][j].getBackground() == Color.BLACK)
-                 {
-                     temp = j+1;
-                         while(buttons[i][temp].getBackground() != Color.BLACK )
-                         {
-                             if(buttons[i][temp].getBackground() == Color.YELLOW){
-                               buttonsYellowSola[i][temp] = buttons[i][temp]; 
-                           }
-                              temp++;
-                              if(temp == 8)
-                              {
-                                  return;
-                              }
-                         }
-                              for (int k = 0; k < 8; k++) {
-                             for (int l = 0; l < 8; l++) {
-                                 if(buttonsYellowSola[k][l] != null && buttonsYellowSola[k][l].getBackground() == Color.YELLOW){
-                                     buttons[k][l].setBackground(Color.BLACK);
-                                     dizi[k][l]=2;
-                                 }
-                             }
-                     }
-                 }
-                 }
-         }
-         }
-     }
-       
     public void yeYukari2 (){
            int temp;
              for (int i = 0; i < 8; i++) {
@@ -1615,6 +1516,7 @@ public class Game extends javax.swing.JFrame {
                  }
              }
      }
+     
      // Burada sarı rengi kullanan oyuncu ve siyah rengi kullanan oyuncuların taşlarının sayısının
      // hesaplanması hedef alınmıştır. Bu işlem taş yeme işleminin kontrolü için gereklidir.
      
@@ -1642,7 +1544,7 @@ public class Game extends javax.swing.JFrame {
         }  
      }
      
-   
+  
     /**
      * 
      * 
@@ -1746,6 +1648,15 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JButton buton7;
     private javax.swing.JButton buton8;
     private javax.swing.JButton buton9;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
     // End of variables declaration//GEN-END:variables
